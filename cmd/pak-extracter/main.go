@@ -180,7 +180,7 @@ func addTask(id int64, pakFile *pak.Pak, file *pak.File) {
 		var err error
 
 		ext := filepath.Ext(file.Name)
-		if filters[ext] {
+		if !filters[ext] {
 			return nil
 		}
 		fpath := filepath.ToSlash(filepath.Clean(filepath.Join(outputDir, strings.ReplaceAll(filepath.Dir(pakFile.GetPath()), assetsDir, ""), file.Name)))
